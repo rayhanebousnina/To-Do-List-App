@@ -1,19 +1,12 @@
-import { useState } from 'react';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import ToDo from "./components/Todo"
 
 function App() {
-  const [task, setTask] = useState("")
-  const handleChange = (e) => {
-    setTask(e.target.value)
-    console.log(task)
-  }
+
   return (
     <div>
-      <h1>To Do List</h1>
-      <input onChange={handleChange} placeholder="Enter your task"></input>
-      <ul>
-        <li>{task}</li>
-      </ul>
+      <ToDo />
     </div>
   );
 }
