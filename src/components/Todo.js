@@ -9,10 +9,11 @@ const ToDo = (props) => {
   const listT = useSelector((state) => state.todoReducers.list);
   console.log(listT);
   return (
-    <div>
-      <h1>To Do List</h1>
+    <div className="container">
+      <h1>All Tasks</h1>
       <div>
         <input
+          className="input-style"
           placeholder="Enter your task"
           value={inputData}
           onChange={(e) => {
@@ -20,32 +21,34 @@ const ToDo = (props) => {
           }}
         ></input>
         <button
+          className="add-button"
           onClick={() => {
             dispatch(addToDo(inputData), setInputData(""));
           }}
         >
-          Add
+          <i class="fas fa-plus fa-2x"></i>
         </button>
       </div>
       <div>
         {listT.map((el) => {
           return (
-            <div key={el.id}>
-              <h3>{el.data}</h3>
+            <div key={el.id} className="task">
+              <h3 className="title">{el.data}</h3>
               <button
+                className="add-button"
                 title="delete item"
                 onClick={() => {
                   dispatch(deleteToDo(el.id));
                 }}
               >
-                Delete
+                <i class="fas fa-trash fa-2x"></i>
               </button>
             </div>
           );
         })}
       </div>
       <div>
-          <button onClick={() => {dispatch(removeToDo())}}>Remove all</button>
+          <button className="btn" onClick={() => {dispatch(removeToDo())}}>Remove all</button>
       </div>
     </div>
   );
